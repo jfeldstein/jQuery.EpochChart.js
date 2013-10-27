@@ -1,6 +1,11 @@
 ( ($) -> 
+  
+  defaults = 
+    markerSrc: 'url(marker.png)'
 
-  $.fn.epochchart = (lines, markers, highchartsOpts={}) ->
+  $.fn.epochchart = (lines, markers, opts={}) ->
+    opts = $.extend true, {}, defaults, opts
+
     # Support for single or multiple lines
     lines = [lines] if Object.prototype.toString.call( lines ) != '[object Array]'
 
@@ -21,10 +26,13 @@
           width: 1
           color: '#808080'
         ]
+      tooltip:
+        shared: true
+        crosshairs: true
       plotOptions:
         scatter:
           marker: 
-            symbol: "url(/line.png)"
+            symbol: opts['markerSrc']
             states: 
               hover:
                 enabled: true
@@ -44,13 +52,13 @@
         enabled: false
 
     # Build options for this chart
-    highchartsOpts = $.extend true, defaultHighchartsOpts, highchartsOpts
+    highchartsOpts = $.extend true, defaultHighchartsOpts, opts['highchartsOpts']
 
     # Build data
-    leastYValue = null;
+    maxY = null;
     lines = $.map lines, (line) ->
       lineData = $.map line.data, (data) ->
-        leastYValue = data[1] if leastYValue==null or data[1] < leastYValue
+        maxY = data[1] if maxY==null or data[1] > maxY
         x: new Date(data[0]*1000)
         y: data[1]
 
@@ -62,7 +70,7 @@
 
     markerData = $.map markers, (marker) ->
       x: new Date(marker[0]*1000)
-      y: leastYValue
+      y: (1.03*maxY)
       name: marker[1]
     markerLine = 
       type: 'scatter'

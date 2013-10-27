@@ -85,7 +85,7 @@ Which looks like:
 
 Which looks like: 
 
-![An EpochChart with custom Highcharts options](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/custom.png "An EpochChart with custom Highcharts options")
+![An EpochChart with custom Highcharts options](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/customcolor.png "An EpochChart with custom Highcharts options")
 
 
 
