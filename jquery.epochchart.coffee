@@ -47,17 +47,10 @@
     highchartsOpts = $.extend true, defaultHighchartsOpts, highchartsOpts
 
     # Build data
-    markerData = $.map markers, (marker) ->
-      x: new Date(marker[0]*1000)
-      y: 500
-      name: marker[1]
-    markerLine = 
-      type: 'scatter'
-      name: 'Markers'
-      data: markerData
-
+    leastYValue = null;
     lines = $.map lines, (line) ->
       lineData = $.map line.data, (data) ->
+        leastYValue = data[1] if leastYValue==null or data[1] < leastYValue
         x: new Date(data[0]*1000)
         y: data[1]
 
@@ -66,6 +59,15 @@
         name: line.name,
         data: lineData
       }  
+
+    markerData = $.map markers, (marker) ->
+      x: new Date(marker[0]*1000)
+      y: leastYValue
+      name: marker[1]
+    markerLine = 
+      type: 'scatter'
+      name: 'Markers'
+      data: markerData
 
     lines.push markerLine
 

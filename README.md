@@ -77,6 +77,9 @@ Which looks like:
       $('#chart').epochchart(lines, markers, opts);
     </script>
 
+Which looks like: 
+
+....
 
 
 ## Compile With

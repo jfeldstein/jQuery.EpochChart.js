@@ -2,7 +2,7 @@
 
 (function($) {
   return $.fn.epochchart = function(lines, markers, highchartsOpts) {
-    var chart, defaultHighchartsOpts, markerData, markerLine;
+    var chart, defaultHighchartsOpts, leastYValue, markerData, markerLine;
     if (highchartsOpts == null) {
       highchartsOpts = {};
     }
@@ -67,21 +67,13 @@
       }
     };
     highchartsOpts = $.extend(true, defaultHighchartsOpts, highchartsOpts);
-    markerData = $.map(markers, function(marker) {
-      return {
-        x: new Date(marker[0] * 1000),
-        y: 500,
-        name: marker[1]
-      };
-    });
-    markerLine = {
-      type: 'scatter',
-      name: 'Markers',
-      data: markerData
-    };
+    leastYValue = null;
     lines = $.map(lines, function(line) {
       var lineData;
       lineData = $.map(line.data, function(data) {
+        if (leastYValue === null || data[1] < leastYValue) {
+          leastYValue = data[1];
+        }
         return {
           x: new Date(data[0] * 1000),
           y: data[1]
@@ -93,6 +85,18 @@
         data: lineData
       };
     });
+    markerData = $.map(markers, function(marker) {
+      return {
+        x: new Date(marker[0] * 1000),
+        y: leastYValue,
+        name: marker[1]
+      };
+    });
+    markerLine = {
+      type: 'scatter',
+      name: 'Markers',
+      data: markerData
+    };
     lines.push(markerLine);
     chart = $.extend(true, highchartsOpts, {
       series: lines
