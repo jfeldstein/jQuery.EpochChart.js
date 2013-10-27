@@ -3,7 +3,7 @@
 (function($) {
   var defaults;
   defaults = {
-    markerSrc: 'url(marker.png)'
+    marker: 'url(marker.png)'
   };
   return $.fn.epochchart = function(lines, markers, opts) {
     var chart, defaultHighchartsOpts, highchartsOpts, markerData, markerLine, maxY;
@@ -44,7 +44,7 @@
       plotOptions: {
         scatter: {
           marker: {
-            symbol: opts['markerSrc'],
+            symbol: opts['marker'],
             states: {
               hover: {
                 enabled: true,

@@ -1,7 +1,7 @@
 ( ($) -> 
   
   defaults = 
-    markerSrc: 'url(marker.png)'
+    marker: 'url(marker.png)'
 
   $.fn.epochchart = (lines, markers, opts={}) ->
     opts = $.extend true, {}, defaults, opts
@@ -32,7 +32,7 @@
       plotOptions:
         scatter:
           marker: 
-            symbol: opts['markerSrc']
+            symbol: opts['marker']
             states: 
               hover:
                 enabled: true

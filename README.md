@@ -23,6 +23,17 @@ This code is free. Go nuts.
     // Multiple lines
     $('#chart').epochchart(lines, markers [, options]);
 
+### It supports these options: 
+
+    {
+      // Change the marker used to denote events, or link to a custom image.
+      marker: url(marker.png), 
+
+      // Overwrite the options we pass into Highcharts here. 
+      // Use anything from http://api.highcharts.com/highcharts
+      highchartsOpts: { ... }
+    }
+
 
 ## Real Examples: 
 
