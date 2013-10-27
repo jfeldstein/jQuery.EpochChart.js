@@ -22,19 +22,24 @@ This code is free. Go nuts.
 
 ### 1. Graph one line, with markers:
 
-    <div id="chart"></div>
+  <div id="oneline"></div>
 
-    <script>
-      // Dates as unix timestamps
-      var line    = [[1259114255000, 2], [1259287055000, 5]];
-      var markers = [[1259200655000, "Things are getting better."]];
+  <script>
+    // Dates as unix timestamps
+    var line    = {
+      name: "The Line",
+      data: [[1259114255000, 2], [1259200655000, 2.25], [1259287055000, 5]]
+    };
 
-      $('#chart').epochchart(line, markers);
-    </script>
+    var markers = [[1259200655000, "Hired the new sales guy."]];
+
+    $('#oneline').epochchart(line, markers);
+  </script>
 
 Which looks like: 
 
-....
+![An EpochChart with one line](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/basic.png "An EpochChart with one line")
+
 
 
 ### 2. Or to graph multiple lines: 
@@ -54,7 +59,8 @@ Which looks like:
 
 Which looks like:
 
-....
+![An EpochChart with TWO lines](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/twolines.png "An EpochChart with TWO lines")
+
 
 
 ### 3. Or pass overrides to the underlying Highcharts implementation:
@@ -79,7 +85,8 @@ Which looks like:
 
 Which looks like: 
 
-....
+![An EpochChart with custom Highcharts options](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/custom.png "An EpochChart with custom Highcharts options")
+
 
 
 ## Compile With
