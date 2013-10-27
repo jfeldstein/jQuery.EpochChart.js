@@ -10,12 +10,12 @@ This code is free. Go nuts.
 ## Use it like so: 
   
     // One line
-    $('#chart').epochchart(line,  markers [, highcharts_options]);
+    $('#chart').epochchart(line,  markers [, options]);
 
     or 
 
     // Multiple lines
-    $('#chart').epochchart(lines, markers [, highcharts_options]);
+    $('#chart').epochchart(lines, markers [, options]);
 
 
 ## Examples: 
