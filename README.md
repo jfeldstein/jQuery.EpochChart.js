@@ -9,18 +9,23 @@ This code is free. Go nuts.
 
 ## Use it like so: 
 
+    $('#chart').epochchart(line,  markers [, highcharts_options]);
+
+    or 
+
+    $('#chart').epochchart(lines, markers [, highcharts_options]);
+
+
+## Examples: 
+
 ### 1. Graph one line, with markers:
 
     <div id="chart"></div>
 
     <script>
       // Dates as unix timestamps
-      var day1 = Date.parse("24-Nov-2009 17:57:35").getTime()/1000;
-      var day2 = Date.parse("25-Nov-2009 17:57:35").getTime()/1000;
-      var day3 = Date.parse("26-Nov-2009 17:57:35").getTime()/1000;
-
-      var line    = [[day1, 2], [day3, 5]];
-      var markers = [[day2, "Things are getting better."]];
+      var line    = [[1259114255000, 2], [1259287055000, 5]];
+      var markers = [[1259200655000, "Things are getting better."]];
 
       $('#chart').epochchart(line, markers);
     </script>
@@ -36,15 +41,11 @@ Which looks like:
 
     <script>
       // Dates as unix timestamps
-      var day1 = Date.parse("24-Nov-2009 17:57:35").getTime()/1000;
-      var day2 = Date.parse("25-Nov-2009 17:57:35").getTime()/1000;
-      var day3 = Date.parse("26-Nov-2009 17:57:35").getTime()/1000;
-
-      var lines   = [];
-      var line1   = [[day1, 2], [day3, 5]];
-      var line2   = [[day1, 5], [day3, 2]];
+      var line1   = [[1259114255000, 2], [1259287055000, 5]];
+      var line2   = [[1259114255000, 5], [1259287055000, 2]];
+      var lines   = [line1, line2];
       
-      var markers = [[day2, "The intersection"]];
+      var markers = [[1259200655000, "The intersection"]];
 
       $('#chart').epochchart(lines, markers);
     </script>
@@ -54,7 +55,29 @@ Which looks like:
 ....
 
 
+### 3. Or pass overrides to the underlying Highcharts implementation:
+
+    <div id="chart"></div>
+
+    <script>
+      // Anything from the HighCharts API: http://api.highcharts.com/highcharts
+      var opts = {
+        plotOptions: {
+            spline: {
+                color: '#FF0000'
+            }
+        },
+      };
+
+      var line    = [[1259114255000, 2], [1259287055000, 5]];
+      var markers = [[1259200655000, "The intersection"]];
+
+      $('#chart').epochchart(lines, markers, opts);
+    </script>
+
+
+
 ## Compile With
 
 `coffee --compile --watch --bare jquery.epochchart.coffee`
->>>>>>> Initial commit with lots of love
+
