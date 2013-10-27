@@ -1,0 +1,74 @@
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.src.js"></script>
+<script src="../jquery.epochchart.js"></script>
+
+</head>
+<body>
+  <h3>One line, with markers:</h3>
+  <div id="oneline" style="height: 200px; width: 400px;"></div>
+
+  <script>
+    // Dates as unix timestamps
+    var line    = {
+      name: "The Line",
+      data: [[1259114255000, 2], [1259200655000, 2.25], [1259287055000, 5]]
+    };
+
+    var markers = [[1259200655000, "Hired the new sales guy."]];
+
+    $('#oneline').epochchart(line, markers);
+  </script>
+
+
+  <h3>Two lines, with markers:</h3>
+  <div id="twolines" style="height: 200px; width: 400px;"></div>
+
+  <script>
+    // Dates as unix timestamps
+    var data1   = [[1259114255000, 2], [1259287055000, 5]];
+    var data2   = [[1259114255000, 5], [1259287055000, 2]];
+    var lines   = [{
+      name: "Line 1",
+      data: data1
+    },{
+      name: "Line 2",
+      data: data2
+    }]
+    
+    var markers = [[1259200655000, "The intersection"]];
+
+    $('#twolines').epochchart(lines, markers);
+  </script>
+
+
+
+  <h3>Custom Line Color:</h3>
+  <div id="custom" style="height: 200px; width: 400px;"></div>
+
+  <script>
+    // Anything from the HighCharts API: http://api.highcharts.com/highcharts
+    var opts = {
+      highchartsOpts: {
+        plotOptions: {
+            spline: {
+                color: '#FF0000'
+            }
+        }
+      }
+    };
+
+    var line = {
+      name: "A Single Line",
+      data: [[1259114255000, 2], [1259287055000, 5]]
+    };
+
+    var markers = [[1259200655000, "On the up!"]];
+
+    $('#custom').epochchart(line, markers, opts);
+  </script>
+
+</body>
+</html>
