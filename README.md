@@ -7,7 +7,13 @@ Built by [@jfeldstein](http://twitter.com/jfeldstein), originally announced at h
 
 This code is free. Go nuts. 
 
-## Use it like so: 
+## Get it: 
+
+1. Have jQuery and Highcharts already installed in your project.
+2. Download [jquery.epochchart.js](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/jquery.epochchart.js) into your project.
+3. Have fun!
+
+## It's used like so: 
   
     // One line
     $('#chart').epochchart(line,  markers [, options]);
@@ -18,7 +24,7 @@ This code is free. Go nuts.
     $('#chart').epochchart(lines, markers [, options]);
 
 
-## Examples: 
+## Real Examples: 
 
 ### 1. Graph one line, with markers:
 
