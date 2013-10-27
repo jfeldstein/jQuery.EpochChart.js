@@ -48,9 +48,16 @@ Which looks like:
 
     <script>
       // Dates as unix timestamps
-      var line1   = [[1259114255000, 2], [1259287055000, 5]];
-      var line2   = [[1259114255000, 5], [1259287055000, 2]];
-      var lines   = [line1, line2];
+      var data1   = [[1259114255000, 2], [1259287055000, 5]];
+      var data2   = [[1259114255000, 5], [1259287055000, 2]];
+      
+      var lines   = [{
+        name: "Line 1",
+        data: data1
+      },{
+        name: "Line 2",
+        data: data2
+      }]
       
       var markers = [[1259200655000, "The intersection"]];
 
@@ -70,15 +77,20 @@ Which looks like:
     <script>
       // Anything from the HighCharts API: http://api.highcharts.com/highcharts
       var opts = {
-        plotOptions: {
-            spline: {
-                color: '#FF0000'
-            }
-        },
+        highchartsOpts: {
+          plotOptions: {
+              spline: {
+                  color: '#FF0000'
+              }
+          }
+        }
       };
 
-      var line    = [[1259114255000, 2], [1259287055000, 5]];
-      var markers = [[1259200655000, "The intersection"]];
+      var line = {
+        name: "A Single Line",
+        data: [[1259114255000, 2], [1259287055000, 5]]
+      };
+      var markers = [[1259200655000, "On the up!"]];
 
       $('#chart').epochchart(lines, markers, opts);
     </script>
