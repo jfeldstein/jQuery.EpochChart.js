@@ -8,11 +8,13 @@ Built by [@jfeldstein](http://twitter.com/jfeldstein), originally announced at h
 This code is free. Go nuts. 
 
 ## Use it like so: 
-
+  
+    // One line
     $('#chart').epochchart(line,  markers [, highcharts_options]);
 
     or 
 
+    // Multiple lines
     $('#chart').epochchart(lines, markers [, highcharts_options]);
 
 
