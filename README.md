@@ -5,6 +5,8 @@ HighCharts mashup for plotting important chronological events on top of your tre
 
 Built by [@jfeldstein](http://twitter.com/jfeldstein), originally announced at http://jfeldstein.com/...
 
+This code is free. Go nuts. 
+
 ## Use it like so: 
 
 ### 1. Graph one line, with markers:
