@@ -22,19 +22,19 @@ This code is free. Go nuts.
 
 ### 1. Graph one line, with markers:
 
-  <div id="oneline"></div>
+    <div id="oneline"></div>
 
-  <script>
-    // Dates as unix timestamps
-    var line    = {
-      name: "The Line",
-      data: [[1259114255000, 2], [1259200655000, 2.25], [1259287055000, 5]]
-    };
+    <script>
+      // Dates as unix timestamps
+      var line    = {
+        name: "The Line",
+        data: [[1259114255000, 2], [1259200655000, 2.25], [1259287055000, 5]]
+      };
 
-    var markers = [[1259200655000, "Hired the new sales guy."]];
+      var markers = [[1259200655000, "Hired the new sales guy."]];
 
-    $('#oneline').epochchart(line, markers);
-  </script>
+      $('#oneline').epochchart(line, markers);
+    </script>
 
 Which looks like: 
 
