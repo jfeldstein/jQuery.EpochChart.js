@@ -3,7 +3,7 @@ jQuery.EpochChart.js
 
 ![Use EpochChart to compare data trends with events](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/multichart.png "Use EpochChart to compare data trends with events")
 
-Plot important chronological events on top of your trending data to learn what decisions and macro events affect your numbers. You give it the data and named events, it shows you how the two play together.
+Plot chronological events on top of your trending data to learn what decisions, product changes or macro events affected your numbers. You give it the analytics data and named events, it shows you how the two play together.
 
 Built by [@jfeldstein](http://twitter.com/jfeldstein). Wraps (and thus requires) HighCharts. Originally announced at http://jfeldstein.com/...
 
