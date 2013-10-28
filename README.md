@@ -1,7 +1,7 @@
 jQuery.EpochChart.js
 ====================
 
-HighCharts mashup for plotting important chronological events on top of your trending data
+Learn what decisions and macro events affected your growth, by plotting your numbers and key chronological events on the same axis. 
 
 Built by [@jfeldstein](http://twitter.com/jfeldstein), originally announced at http://jfeldstein.com/...
 
