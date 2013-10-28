@@ -3,7 +3,7 @@ jQuery.EpochChart.js
 
 Learn what decisions and macro events affected your growth, by plotting your numbers and key chronological events on the same axis. 
 
-Built by [@jfeldstein](http://twitter.com/jfeldstein), originally announced at http://jfeldstein.com/...
+Built by [@jfeldstein](http://twitter.com/jfeldstein) as a friendly API on top of HighCharts, originally announced at http://jfeldstein.com/...
 
 This code is free. Go nuts. 
 
