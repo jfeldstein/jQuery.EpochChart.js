@@ -1,7 +1,7 @@
 jQuery.EpochChart.js
 ====================
 
-Learn what decisions and macro events affected your growth, by plotting your numbers and key chronological events on the same axis. 
+Plot important chronological events on top of your trending data, to learn what decisions and macro events affected your numbers. 
 
 Built by [@jfeldstein](http://twitter.com/jfeldstein) as a friendly API on top of HighCharts, originally announced at http://jfeldstein.com/...
 
