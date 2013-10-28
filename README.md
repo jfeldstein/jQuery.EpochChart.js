@@ -5,7 +5,7 @@ jQuery.EpochChart.js
 
 Plot chronological events on top of your trending data to learn what decisions, product changes or macro events affected your numbers. You give it the analytics data and named events, it shows you how the two play together.
 
-Built by [@jfeldstein](http://twitter.com/jfeldstein). Wraps (and thus requires) HighCharts. Originally announced at http://jfeldstein.com/...
+Built by [@jfeldstein](http://twitter.com/jfeldstein). Wraps (and thus requires) HighCharts. Originally announced on [jfeldstein.com](http://jfeldstein.com/2013/10/epochchart-what-made-the-graph-jump-that-week/).
 
 This code is free. Go nuts. 
 
