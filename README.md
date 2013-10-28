@@ -3,7 +3,7 @@ jQuery.EpochChart.js
 
 Plot important chronological events on top of your trending data to learn what decisions and macro events affected your numbers. 
 
-Built by [@jfeldstein](http://twitter.com/jfeldstein) as a friendly API on top of HighCharts, originally announced at http://jfeldstein.com/...
+Built by [@jfeldstein](http://twitter.com/jfeldstein) and is powered by (and requires) HighCharts. Originally announced at http://jfeldstein.com/...
 
 This code is free. Go nuts. 
 
