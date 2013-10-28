@@ -80,8 +80,6 @@
 
     lines.push markerLine
 
-    console.log lines
-
 
     # Build data into highcharts options for final chart hash
     chart = $.extend true, highchartsOpts,

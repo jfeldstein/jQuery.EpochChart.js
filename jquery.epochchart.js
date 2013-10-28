@@ -108,7 +108,6 @@
       data: markerData
     };
     lines.push(markerLine);
-    console.log(lines);
     chart = $.extend(true, highchartsOpts, {
       series: lines
     });
