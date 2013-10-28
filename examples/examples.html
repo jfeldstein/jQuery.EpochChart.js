@@ -14,10 +14,19 @@
     // Dates as unix timestamps
     var line    = {
       name: "The Line",
-      data: [[1259114255000, 2], [1259200655000, 2.25], [1259287055000, 5]]
+      data: [
+      [1259114255000, 2], 
+      [1259200655000, 2.25], 
+      [1259287055000, 5], 
+      [1259395200000, 5.5], 
+      [1259481600000, 6], 
+      [1259568000000, 6],
+      [1259654400000, 9],
+      [1259740800000, 12]
+      ]
     };
 
-    var markers = [[1259200655000, "Hired the new sales guy."]];
+    var markers = [[1259200655000, "Hired the new sales guy."], [1259568000000, "Integrated with SalesForce"]];
 
     $('#oneline').epochchart(line, markers);
   </script>

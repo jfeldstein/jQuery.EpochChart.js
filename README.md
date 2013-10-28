@@ -1,9 +1,11 @@
 jQuery.EpochChart.js
 ====================
 
-Plot important chronological events on top of your trending data to learn what decisions and macro events affected your numbers. 
+![Use EpochChart to compare data trends with events](https://raw.github.com/jfeldstein/jQuery.EpochChart.js/master/examples/images/multichart.png "Use EpochChart to compare data trends with events")
 
-Built by [@jfeldstein](http://twitter.com/jfeldstein) and is powered by (and requires) HighCharts. Originally announced at http://jfeldstein.com/...
+Plot important chronological events on top of your trending data to learn what decisions and macro events affect your numbers. You give it the data and named events, it shows you how the two play together.
+
+Built by [@jfeldstein](http://twitter.com/jfeldstein). Wraps (and thus requires) HighCharts. Originally announced at http://jfeldstein.com/...
 
 This code is free. Go nuts. 
 
@@ -35,7 +37,7 @@ This code is free. Go nuts.
     }
 
 
-## Real Examples: 
+## Simple Usage Examples: 
 
 ### 1. Graph one line, with markers:
 

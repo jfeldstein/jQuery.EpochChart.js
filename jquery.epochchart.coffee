@@ -58,8 +58,9 @@
     maxY = null;
     lines = $.map lines, (line) ->
       lineData = $.map line.data, (data) ->
+        console.log data[0]
         maxY = data[1] if maxY==null or data[1] > maxY
-        x: new Date(data[0]*1000)
+        x: new Date(data[0])
         y: data[1]
 
       {
@@ -69,7 +70,7 @@
       }  
 
     markerData = $.map markers, (marker) ->
-      x: new Date(marker[0]*1000)
+      x: new Date(marker[0])
       y: (1.03*maxY)
       name: marker[1]
     markerLine = 
@@ -78,6 +79,8 @@
       data: markerData
 
     lines.push markerLine
+
+    console.log lines
 
 
     # Build data into highcharts options for final chart hash
