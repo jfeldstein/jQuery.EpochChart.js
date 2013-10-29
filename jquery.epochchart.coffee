@@ -54,7 +54,6 @@
         ]
       tooltip:
         shared: true
-        crosshairs: true
       plotOptions:
         scatter:
           marker: 

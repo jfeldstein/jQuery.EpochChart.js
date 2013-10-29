@@ -70,8 +70,7 @@
         ]
       },
       tooltip: {
-        shared: true,
-        crosshairs: true
+        shared: true
       },
       plotOptions: {
         scatter: {
