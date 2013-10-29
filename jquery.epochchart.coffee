@@ -1,5 +1,31 @@
 ( ($) -> 
   
+  tallestPoint = (lines, x) ->
+    computedValues = $.map lines, (line) ->
+      prevPoint = null
+      ret = null
+      $.map line['data'], (datum, i) ->
+        if x >= datum['x']
+          prevPoint = datum
+          return
+
+        if x < datum['x']
+          if prevPoint == null
+            ret = datum['y']
+            return
+
+          # How far between the two x-points?
+          xdiff = x-prevPoint['x']
+          slope = ((datum['y']-prevPoint['y'])/(datum['x']-prevPoint['x']))
+          ret = prevPoint['y'] + slope*(x-prevPoint['x'])
+          return
+      ret
+
+    ret = null
+    $.each computedValues, (i, v) ->
+      ret = v if v? and (not ret? or ret<v)
+    ret
+
   defaults = 
     marker: 'url(marker.png)'
 
@@ -58,7 +84,6 @@
     maxY = null;
     lines = $.map lines, (line) ->
       lineData = $.map line.data, (data) ->
-        console.log data[0]
         maxY = data[1] if maxY==null or data[1] > maxY
         x: new Date(data[0])
         y: data[1]
@@ -71,7 +96,7 @@
 
     markerData = $.map markers, (marker) ->
       x: new Date(marker[0])
-      y: (1.03*maxY)
+      y: tallestPoint(lines, marker[0])
       name: marker[1]
     markerLine = 
       type: 'scatter'
@@ -79,7 +104,6 @@
       data: markerData
 
     lines.push markerLine
-
 
     # Build data into highcharts options for final chart hash
     chart = $.extend true, highchartsOpts,
