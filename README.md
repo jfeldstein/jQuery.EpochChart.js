@@ -122,5 +122,7 @@ Which looks like:
 
 ## Compile With
 
-`coffee --compile --watch --bare jquery.epochchart.coffee`
+`coffee --compile --watch  jquery.epochchart.coffee`
+
+(thanks to [jashkenas](http://stackoverflow.com/a/4534417/311901))
 
