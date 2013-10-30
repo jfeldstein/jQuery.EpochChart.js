@@ -108,7 +108,5 @@ $.fn.epochchart = (lines, markers, opts={}) ->
   chart = $.extend true, highchartsOpts,
     series: lines
 
-  console.log chart
-
   # Build the chart
   $(this).highcharts chart
