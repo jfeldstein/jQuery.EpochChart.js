@@ -99,6 +99,11 @@
             headerFormat: '',
             pointFormat: '{point.name}'
           }
+        },
+        spline: {
+          marker: {
+            enabled: false
+          }
         }
       },
       legend: {
@@ -136,9 +141,11 @@
       name: 'Markers',
       data: markerData
     };
+    lines.push(markerLine);
     chart = $.extend(true, highchartsOpts, {
       series: lines
     });
+    console.log(chart);
     return $(this).highcharts(chart);
   };
 

@@ -70,9 +70,9 @@ $.fn.epochchart = (lines, markers, opts={}) ->
           enabled: true
           headerFormat: '',
           pointFormat: '{point.name}'
-#        spline: 
-#          marker: 
-#            enabled: false
+      spline:
+        marker: 
+          enabled: false
     legend: 
       enabled: false
 
@@ -102,11 +102,13 @@ $.fn.epochchart = (lines, markers, opts={}) ->
     name: 'Markers'
     data: markerData
 
-  #lines.push markerLine
+  lines.push markerLine
 
   # Build data into highcharts options for final chart hash
   chart = $.extend true, highchartsOpts,
     series: lines
+
+  console.log chart
 
   # Build the chart
   $(this).highcharts chart
