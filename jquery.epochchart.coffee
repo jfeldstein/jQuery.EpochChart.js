@@ -1,23 +1,5 @@
 $ = jQuery
 
-Date.prototype.format = (format) ->
-  o =
-    "M+" : this.getMonth()+1  #month
-    "d+" : this.getDate()     #day
-    "h+" : this.getHours()    #hour
-    "m+" : this.getMinutes()  #minute
-    "s+" : this.getSeconds()  #second
-    "q+" : Math.floor((this.getMonth()+3)/3)   #quarter
-    "S"  : this.getMilliseconds() #millisecond
-
-  if(/(y+)/.test(format)) 
-    format=format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length))
-  for k in o
-    if(new RegExp("("+ k +")").test(format))
-      format = format.replace(RegExp.$1, if (RegExp.$1.length==1) then o[k] else ("00"+ o[k]).substr((""+ o[k]).length))
-  return format
-
-
 tallestPoint = (lines, x) ->
   computedValues = $.map lines, (line) ->
     prevPoint = null
@@ -84,8 +66,8 @@ $.fn.epochchart = (lines, markers, opts={}) ->
           s += "#{@series.name}: #{@y}"
         s
       positioner: ->
-        x: opts.tooltipX
-        y: opts.tooltipY
+        x: opts.tooltip.x
+        y: opts.tooltip.y
     plotOptions:
       scatter:
         marker: 

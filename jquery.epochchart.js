@@ -4,29 +4,6 @@
 
   $ = jQuery;
 
-  Date.prototype.format = function(format) {
-    var k, o, _i, _len;
-    o = {
-      "M+": this.getMonth() + 1,
-      "d+": this.getDate(),
-      "h+": this.getHours(),
-      "m+": this.getMinutes(),
-      "s+": this.getSeconds(),
-      "q+": Math.floor((this.getMonth() + 3) / 3),
-      "S": this.getMilliseconds()
-    };
-    if (/(y+)/.test(format)) {
-      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    }
-    for (_i = 0, _len = o.length; _i < _len; _i++) {
-      k = o[_i];
-      if (new RegExp("(" + k(+")")).test(format)) {
-        format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-      }
-    }
-    return format;
-  };
-
   tallestPoint = function(lines, x) {
     var computedValues, ret;
     computedValues = $.map(lines, function(line) {
@@ -63,8 +40,10 @@
   defaults = {
     marker: 'url(marker.png)',
     dateFormat: '%b %e',
-    tooltipX: 30,
-    tooltipY: 10
+    tooltip: {
+      x: 30,
+      y: 10
+    }
   };
 
   $.fn.epochchart = function(lines, markers, opts) {
@@ -113,8 +92,8 @@
         },
         positioner: function() {
           return {
-            x: opts.tooltipX,
-            y: opts.tooltipY
+            x: opts.tooltip.x,
+            y: opts.tooltip.y
           };
         }
       },
