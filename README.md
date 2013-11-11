@@ -33,7 +33,15 @@ This code is free. Go nuts.
 
       // Overwrite the options we pass into Highcharts here. 
       // Use anything from http://api.highcharts.com/highcharts
-      highchartsOpts: { ... }
+      highchartsOpts: { ... },
+
+      // Change the date formats in tooltips and the x-axis by entering a
+      // Highcharts.dateFormat-compatible formatting string.
+      // See: http://api.highcharts.com/highcharts#Highcharts.dateFormat()
+      dateFormat: '...',
+
+      // Reposition the fixed tooltip. Pixel values from the top left. 
+      tooltip: {x: 30, y: 10}
     }
 
 

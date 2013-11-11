@@ -47,8 +47,9 @@ tallestPoint = (lines, x) ->
 defaults = 
   marker: 'url(marker.png)'
   dateFormat: '%b %e'
-  tooltipX: 30
-  tooltipY: 10
+  tooltip: 
+    x: 30
+    y: 10
 
 $.fn.epochchart = (lines, markers, opts={}) ->
   opts = $.extend true, {}, defaults, opts
