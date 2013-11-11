@@ -1,5 +1,23 @@
 $ = jQuery
 
+Date.prototype.format = (format) ->
+  o =
+    "M+" : this.getMonth()+1  #month
+    "d+" : this.getDate()     #day
+    "h+" : this.getHours()    #hour
+    "m+" : this.getMinutes()  #minute
+    "s+" : this.getSeconds()  #second
+    "q+" : Math.floor((this.getMonth()+3)/3)   #quarter
+    "S"  : this.getMilliseconds() #millisecond
+
+  if(/(y+)/.test(format)) 
+    format=format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length))
+  for k in o
+    if(new RegExp("("+ k +")").test(format))
+      format = format.replace(RegExp.$1, if (RegExp.$1.length==1) then o[k] else ("00"+ o[k]).substr((""+ o[k]).length))
+  return format
+
+
 tallestPoint = (lines, x) ->
   computedValues = $.map lines, (line) ->
     prevPoint = null
@@ -28,6 +46,9 @@ tallestPoint = (lines, x) ->
 
 defaults = 
   marker: 'url(marker.png)'
+  dateFormat: '%b %e'
+  tooltipX: 30
+  tooltipY: 10
 
 $.fn.epochchart = (lines, markers, opts={}) ->
   opts = $.extend true, {}, defaults, opts
@@ -42,7 +63,7 @@ $.fn.epochchart = (lines, markers, opts={}) ->
     xAxis: 
       type: 'datetime'
       dateTimeLabelFormats: 
-        month: '%e. %b'
+        day: opts.dateFormat
         year: '%b'
     yAxis: 
       title: 
@@ -53,10 +74,17 @@ $.fn.epochchart = (lines, markers, opts={}) ->
         color: '#808080'
       ]
     tooltip:
-      shared: true
+      formatter: ->
+        date = Highcharts.dateFormat opts.dateFormat, @x
+        s = '<b>' + date + '</b><br />'
+        if @point.name? 
+          s += @point.name
+        else
+          s += "#{@series.name}: #{@y}"
+        s
       positioner: ->
-        x: 30
-        y: 10
+        x: opts.tooltipX
+        y: opts.tooltipY
     plotOptions:
       scatter:
         marker: 
@@ -69,10 +97,6 @@ $.fn.epochchart = (lines, markers, opts={}) ->
           hover: 
             marker: 
               enabled: false
-        tooltip: 
-          enabled: true
-          headerFormat: '',
-          pointFormat: '{point.name}'
       spline:
         marker: 
           enabled: false
@@ -89,7 +113,6 @@ $.fn.epochchart = (lines, markers, opts={}) ->
       maxY = data[1] if maxY==null or data[1] > maxY
       x: new Date(data[0])
       y: data[1]
-
     {
       type: 'spline',
       name: line.name,

@@ -4,6 +4,29 @@
 
   $ = jQuery;
 
+  Date.prototype.format = function(format) {
+    var k, o, _i, _len;
+    o = {
+      "M+": this.getMonth() + 1,
+      "d+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (_i = 0, _len = o.length; _i < _len; _i++) {
+      k = o[_i];
+      if (new RegExp("(" + k(+")")).test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
   tallestPoint = function(lines, x) {
     var computedValues, ret;
     computedValues = $.map(lines, function(line) {
@@ -38,7 +61,10 @@
   };
 
   defaults = {
-    marker: 'url(marker.png)'
+    marker: 'url(marker.png)',
+    dateFormat: '%b %e',
+    tooltipX: 30,
+    tooltipY: 10
   };
 
   $.fn.epochchart = function(lines, markers, opts) {
@@ -57,7 +83,7 @@
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
-          month: '%e. %b',
+          day: opts.dateFormat,
           year: '%b'
         }
       },
@@ -74,11 +100,21 @@
         ]
       },
       tooltip: {
-        shared: true,
+        formatter: function() {
+          var date, s;
+          date = Highcharts.dateFormat(opts.dateFormat, this.x);
+          s = '<b>' + date + '</b><br />';
+          if (this.point.name != null) {
+            s += this.point.name;
+          } else {
+            s += "" + this.series.name + ": " + this.y;
+          }
+          return s;
+        },
         positioner: function() {
           return {
-            x: 30,
-            y: 10
+            x: opts.tooltipX,
+            y: opts.tooltipY
           };
         }
       },
@@ -99,11 +135,6 @@
                 enabled: false
               }
             }
-          },
-          tooltip: {
-            enabled: true,
-            headerFormat: '',
-            pointFormat: '{point.name}'
           }
         },
         spline: {
