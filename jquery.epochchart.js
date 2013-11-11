@@ -74,7 +74,13 @@
         ]
       },
       tooltip: {
-        shared: true
+        shared: true,
+        positioner: function() {
+          return {
+            x: 30,
+            y: 10
+          };
+        }
       },
       plotOptions: {
         scatter: {

@@ -54,6 +54,9 @@ $.fn.epochchart = (lines, markers, opts={}) ->
       ]
     tooltip:
       shared: true
+      positioner: ->
+        x: 30
+        y: 10
     plotOptions:
       scatter:
         marker: 
